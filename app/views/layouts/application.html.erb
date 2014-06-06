@@ -1,14 +1,155 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-  <title>Travel</title>
+<title>Travel</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-5">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+	<link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
-
-<%= yield %>
-
+	<div id="header">
+		<a href="index.html" class="logo"><img src="/assets/logo.jpg" alt="" width="274" height="90" /></a>																																								
+	    <div>
+		  <span>Languages: </span>
+		  <a href="#"><%= image_tag "/assets/l1.gif", alt: "", width:"19", height:"11" %></a>
+		  <a href="#"><img src="/assets/l2.gif" alt="" width="19" height="11" /></a>
+		  <a href="#"><img src="/assets/l3.gif" alt="" width="19" height="11" class="active" /></a>
+		  <a href="#"><img src="/assets/l4.gif" alt="" width="19" height="11" /></a>
+		  <a href="#"><img src="/assets/l5.gif" alt="" width="19" height="11" /></a>
+		</div>
+		<ul id="menu">
+			<li><a href="index.html">Home Page</a></li>
+			<li><a href="index2.html">About Company</a></li>
+			<li><a href="index2.html">Hot Tours</a></li>
+			<li><a href="index2.html">Hotels</a></li>
+			<li><a href="index2.html">Car Rental</a></li>
+			<li><a href="index2.html">Contact us</a></li>
+		</ul>
+	</div>
+	<div id="wrapper">
+	  <div id="left">
+			<div id="columns">
+				<div class="column">
+					<div>
+						<h4 class="title1">Popular Tours</h4>
+						<ul>
+							<li><a href="#">Great Wall of CHINA</a></li>
+							<li><a href="#">Forbidden City</a></li>
+							<li><a href="#">Summer Palace</a></li>
+							<li><a href="#">Temple of Heaven</a></li>
+							<li><a href="#">Tian’anmen Square</a></li>
+							<li><a href="#">Hutong Tour</a></li>
+							<li><a href="#">Ming Tomb</a></li>
+							<li><a href="#">Panda Zoo</a></li>
+							<li><a href="#">Lama (Yonghe) Temple</a></li>
+							<li><a href="#">Olympic Tour</a></li>
+							<li><a href="#">Kongfu&acrobatics Tour</a></li>
+							<li><a href="#">Beijing Opera</a></li>
+						</ul>
+						<a href="#" class="more">more tours</a>
+					</div>
+				</div>
+				<div class="column c2">
+					<div>
+						<h4 class="title2">Hot Tours</h4>
+						<div class="pic">
+							<a href="#"><img src="/assets/pic1.jpg" alt="" width="108" height="53" /></a><br />
+							<span><a href="#">Egypt</a></span>
+						</div>
+						<div class="pic">
+							<a href="#"><img src="/assets/pic2.jpg" alt="" width="108" height="53" /></a><br />
+							<span><a href="#">Miami</a></span>
+						</div>
+						<div class="pic">
+							<a href="#"><img src="/assets/pic3.jpg" alt="" width="108" height="53" /></a><br />
+							<span><a href="#">Russia</a></span>
+						</div>
+						<a href="#" class="more">more hot tours</a>
+					</div>
+				</div>
+				<div class="column c3">
+					<div>
+						<h4 class="title3">Top Hotel Deals</h4>
+						<ul>
+							<li><a href="#">Beijing Tianjin Tour</a></li>
+							<li><a href="#">Beijing Xi’an Tour</a></li>
+							<li><a href="#">Beijing Qingdao Tour</a></li>
+							<li><a href="#">Beijing Shanghai Tour</a></li>
+							<li><a href="#">Beijing Guilin Tour</a></li>
+							<li><a href="#">Beijing Dalian Tour</a></li>
+							<li><a href="#">Great Wall Hiking</a></li>
+						</ul>
+						<a href="#" class="more">more hotels</a>
+					</div>
+				</div>
+			</div>
+			<div id="search">
+				<img src="/assets/title5.gif" alt="" width="119" height="22" /><br /> 
+				<form action="#">
+					<p class="style1">From <input type="text" /> To <input type="text" /></p>
+					<p><span class="pad">Depart</span> Return</p>
+					<p class="pad2"><input type="radio" class="radio" checked> <select class="select1"><option>March</option></select> <select class="select2"><option>01</option></select> <select class="select1"><option>March</option></select> <select class="select2"><option>14</option></select></p>
+					<p><input type="radio" class="radio"> My dates are flexible</p>
+					<p class="pad3">
+						<span><strong>Adults</strong><br /><select class="select3"><option>1</option></select></span>
+						<span><strong>Children</strong><br /><select class="select3"><option>0</option></select></span>
+						<span><strong>Seniors</strong><br /><select class="select3"><option>0</option></select></span>					  
+						<span><strong>Connections</strong><br /><select class="select3"><option>1</option></select></span>
+						<span><a href="#" class="button"><img src="/assets/button.gif" alt="" width="95" height="19" /></a></span>
+					</p>
+					<p class="text2">More Flight Search Options: <a href="#">One-Way</a>, <a href="#">Multi-City</a>, <a href="#">more...</a></p>
+				</form>
+			</div>
+			<div class="text">
+			  	<img src="/assets/title4.gif" alt="" width="249" height="27" />
+				<p>Lorem ipsum dolor sit amet, sectetu adip scing varius interdum incid unt quis, libero. Aenean mturpis. Maecenas hendrerit masa laoreet iaculipede mnisl ulamcorper. Tellus er sodales enim, in tincidunt mauris in odio. Massa ac laoreet iaculipede nisl ullamcorpermassa, ac consectetuer feipsum eget pede.  Proin nunc. Donec massa. Nulla pulvinar, nisl ac convallis nonummy, tellus eros sodales enim, in tincidunt mauris in odio.  massa ac laoreet iaculipede nisl ullamcorpermassa,consectetuer feipsum eget pede. Proin nunc. </p>
+				<a href="#" class="more2">more info</a>
+			</div>
+		</div>
+		<div id="right">
+			<div>
+				<img src="/assets/title6.gif" alt="" width="183" height="27" />
+				<p>Lorem ipsum dolor sit amet, sectetu adip scing varius interdum incid unt quis, libero. Aenean mturpis. Maecenas hendrerit masa laoreet iaculipede mnisl ulamcorper. Tellus er sodales enim, in tincidunt mauris in odio. Massa ac laoreet iaculipede nisl ullamcorpermassa, ac consectetuer feipsum eget pede.  Proin nunc. Donec massa. Nulla pulvinar, nisl ac convallis nonummy, tellus eros sodales enim, in tincidunt mauris in odio.  massa ac laoreet iaculipede nisl ullamcorpermassa,consectetuer feipsum eget pede. Proin nunc. Donec massa. Nulla pulvinar, nisl ac convallis nonummy, tellus eros sodales enim, in tincidunt mauris in odi.Lorem ipsum dolor sit amet, consectetuer adipi scing elit.Mauris u tincidunt quis, libero. </p>
+			</div>
+			<div>
+				<img src="/assets/title7.gif" alt="" width="177" height="28" /><br />
+				<div class="photo">
+					<img src="/assets/photo1.jpg" alt="" width="194" height="111" /><br />
+					<a href="#">Paris, France</a>			  
+				</div>
+				<div class="photo">
+					<img src="/assets/photo2.jpg" alt="" width="194" height="111" /><br />
+					<a href="#">Agia Napa, Cyprus</a>			  
+				</div>
+				<div class="photo">
+					<img src="/assets/photo3.jpg" alt="" width="194" height="111" /><br />
+					<a href="#">Maldives</a>			  
+				</div>
+				<div class="photo">
+					<img src="/assets/photo4.jpg" alt="" width="194" height="111" /><br />
+					<a href="#">Miami</a>			  
+				</div>
+			</div>
+			<div>
+				<a href="#" id="more">more tours</a>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<ul>
+			<li><a href="index.html">Home Page</a> |</li>
+			<li><a href="index2.html">About Company</a> |</li>
+			<li><a href="index2.html">Hot Tours</a> |</li>
+			<li><a href="index2.html">Hotels</a> |</li>
+			<li><a href="index2.html">Services</a> |</li>
+			<li><a href="index2.html">Reviews</a> |</li>
+			<li><a href="index2.html">Partners</a> |</li>
+			<li><a href="index2.html">Contact us</a></li>
+		</ul>
+		<p>Copyright &copy;. All rights reserved. Design by <a href="http://www.bestfreetemplates.info" target="_blank" title="Best Free Templates" class="bft">BFT</a></p>																																																			
+	</div>
 </body>
 </html>
