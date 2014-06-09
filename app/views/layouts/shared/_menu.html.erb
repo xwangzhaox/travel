@@ -1,6 +1,6 @@
-      <li><a href="index.html">Home Page</a></li>
-      <li><a href="index2.html">About Company</a></li>
-      <li><a href="index2.html">Hot Tours</a></li>
-      <li><a href="index2.html">Hotels</a></li>
-      <li><a href="index2.html">Car Rental</a></li>
-      <li><a href="index2.html">Contact us</a></li>
+      <li><%= link_to "Home", { :controller => 'index', :action => 'index'} %></li>
+      <li><%= link_to "About Company", { :controller => 'index', :action => 'about_company'} %></li>
+      <li><%= link_to "Hot Tours", { :controller => 'index', :action => 'hot_tours' } %></li>
+      <li><%= link_to "Hotels", { :controller => 'index', :action => 'hotels' } %></li>
+      <li><%= link_to "Car Rental", { :controller => 'index', :action => 'car_rental' } %></li>
+      <li><%= link_to "Contact us", { :controller => 'index', :action => 'contact_us' } %></li>

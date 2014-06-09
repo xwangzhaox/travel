@@ -9,8 +9,17 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= stub admin/admin
  *= require_tree .
  */
+
+/*require [路徑]:載入某支特定檔案，如果這支檔案被載入多次，Sprockets 也會很聰明的只幫你載入一次。
+include [路徑]:與require一樣，差別在即使是被載入過的檔案也會再被載入。
+require_directory [路徑] : 將路徑下不包含子目錄的檔案按照字母順序依次載入。
+require_tree [路徑] : 會將路徑下包含子目錄的檔案全部載入。
+require_self [路徑] : 告訴 Sprockets 再載入其他的檔案前，先將自己的內容插入。
+depend_on [路徑] : 宣告依賴於某支 js，在需要通知某支快取的 assets 過期時非常實用。
+stub [路徑] : 將路徑中的 assets 加入黑名單，所有其他的 require 都不會將他載入。*/
 *{
 margin:0px;
 padding:0px;
@@ -59,7 +68,7 @@ width:100px;
 height:18px;
 float:left;
 font-size:11px;
-/ font-size:9px;
+font-size:9px;
 margin:0 23px 0 0;
 border:2px inset #808080
 }
@@ -216,7 +225,7 @@ color:#000000
 }
 #search p{
 line-height:17px;
-/ line-height:normal
+line-height:normal
 }
 .style1{
 padding:13px 0
@@ -232,23 +241,23 @@ margin:0 35px 0 10px
 width:65px;
 font-size:11px;
 height:18px;
-/ font-size:9px;
+font-size:9px;
 border:1px inset #808080;
 }
 .select2{
 width:45px;
 font-size:11px;
 height:18px;
-/ font-size:9px;
+font-size:9px;
 border:1px inset #808080;
 margin:0 57px 0 0;
-/ margin:0 50px 0 0
+margin:0 50px 0 0
 }
 .select3{
 width:45px;
 height:18px;
 text-align:center;
-/ font-size:9px;
+font-size:9px;
 font-size:10px;
 font-weight:bold;
 margin:1px 0;
@@ -272,7 +281,7 @@ font-size:11px;
 .button{
 display:block;
 margin:13px 0 0 15px;
-/ margin:13px 0 0 9px
+margin:13px 0 0 9px
 }
 .text2{
 display:block;
@@ -451,7 +460,7 @@ text-decoration:underline
 .about p a:hover{text-decoration:none}
 #sidebar{
 margin:65px 0 0 25px;
-/ margin:68px 0 0 25px;
+margin:68px 0 0 25px;
 float:left;
 width:218px;
 }
