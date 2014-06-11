@@ -40,6 +40,20 @@ height:auto;
 #right {
   display: inline-block;
   padding: 20px;
+  width: 700px;
+}
+#right-content {
+  padding-top: 70px;
+}
+#right-title h2 {
+  float: left;
+}
+#right-title a {
+  float: right;
+  padding-top: 3px;
+}
+#right-content table {
+  #border-top: 8px solid #254A73;
 }
 .clear {
   clear: both;
