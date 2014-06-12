@@ -4,8 +4,10 @@
 <head>
 <title>Travel</title>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-5">
-  <%= stylesheet_link_tag    "admin/admin", :media => "all" %>
+  <%= stylesheet_link_tag    "admin/admin" %>
+  <%#= stylesheet_link_tag    "admin/textext.core", "admin/textext.plugin.arrow", "admin/textext.plugin.aotocomplete", "admin/textext.plugin.clear", "admin/textext.plugin.focus", "admin/textext.plugin.prompt", "admin/textext.plugin.tags" %>
   <%= javascript_include_tag "application" %>
+  <%#= javascript_include_tag "admin/textext" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -16,7 +18,12 @@
     <div id="nav">
       <div id="menu">
         <ul>
-          <li><a href="">artical</a></li>
+          <li><a href="/admin">Articles</a></li>
+          <br>
+          <% Category.all.map(&:name).each do |category_name| %>
+            <% format_name = category_name.gsub(/ /, "_").downcase %>
+            <li><%= link_to format_name.titleize, { :controller => 'articles', :action => format_name }  %></li>
+          <% end %>
         </ul>
       </div>
     </div>

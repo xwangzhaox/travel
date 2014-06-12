@@ -4,6 +4,10 @@ class IndexController < ApplicationController
   def index
     @promotions = Admin::Article.find_by_title("News & Promotions").content
     @travel_guide = Admin::Article.find_by_title("travel_guide").content
+    @popular_tours_name   = Category.find_by_name("POPULAR TOURS").articles
+    @hot_tours_name       = Category.find_by_name("HOT TOURS").articles
+    @top_hotel_deals_name = Category.find_by_name("TOP HOTEL DEALS").articles
+
     render :layout => 'application'
   end
 

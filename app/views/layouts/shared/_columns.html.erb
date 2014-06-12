@@ -2,7 +2,10 @@
           <div>
             <h4 class="title1">Popular Tours</h4>
             <ul>
-              <li><a href="#">Great Wall of CHINA</a></li>
+              <% @popular_tours_name.each do |popular_tour| %>
+                <li><%= link_to popular_tour.title.gsub(/_/, " ").titleize, "#"%></li>  
+              <% end %>
+              <!-- <li><a href="#">Great Wall of CHINA</a></li>
               <li><a href="#">Forbidden City</a></li>
               <li><a href="#">Summer Palace</a></li>
               <li><a href="#">Temple of Heaven</a></li>
@@ -13,7 +16,7 @@
               <li><a href="#">Lama (Yonghe) Temple</a></li>
               <li><a href="#">Olympic Tour</a></li>
               <li><a href="#">Kongfu&acrobatics Tour</a></li>
-              <li><a href="#">Beijing Opera</a></li>
+              <li><a href="#">Beijing Opera</a></li> -->
             </ul>
             <a href="#" class="more">more tours</a>
           </div>
@@ -21,7 +24,13 @@
         <div class="column c2">
           <div>
             <h4 class="title2">Hot Tours</h4>
-            <div class="pic">
+            <% @hot_tours_name.each do |hot_tour| %>
+              <div class="pic">
+                <a href="#"><img src="/assets/pic1.jpg" alt="" width="108" height="53" /></a><br />
+                <span><%= link_to hot_tour.title.gsub(/_/, " ").titleize, "#"%></span>
+              </div>
+            <% end %>
+            <!-- <div class="pic">
               <a href="#"><img src="/assets/pic1.jpg" alt="" width="108" height="53" /></a><br />
               <span><a href="#">Egypt</a></span>
             </div>
@@ -32,7 +41,7 @@
             <div class="pic">
               <a href="#"><img src="/assets/pic3.jpg" alt="" width="108" height="53" /></a><br />
               <span><a href="#">Russia</a></span>
-            </div>
+            </div> -->
             <a href="#" class="more">more hot tours</a>
           </div>
         </div>
@@ -40,13 +49,16 @@
           <div>
             <h4 class="title3">Top Hotel Deals</h4>
             <ul>
-              <li><a href="#">Beijing Tianjin Tour</a></li>
+              <% @top_hotel_deals_name.each do |top_hotel_deal| %>
+                <li><%= link_to top_hotel_deal.title.gsub(/_/, " ").titleize, "#"%></li>  
+              <% end %>
+              <!-- <li><a href="#">Beijing Tianjin Tour</a></li>
               <li><a href="#">Beijing Xi’an Tour</a></li>
               <li><a href="#">Beijing Qingdao Tour</a></li>
               <li><a href="#">Beijing Shanghai Tour</a></li>
               <li><a href="#">Beijing Guilin Tour</a></li>
               <li><a href="#">Beijing Dalian Tour</a></li>
-              <li><a href="#">Great Wall Hiking</a></li>
+              <li><a href="#">Great Wall Hiking</a></li> -->
             </ul>
             <a href="#" class="more">more hotels</a>
           </div>

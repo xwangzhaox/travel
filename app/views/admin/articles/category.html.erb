@@ -1,0 +1,32 @@
+<h1>Select articles for popular tour</h1>
+<br />
+  <div class="control-group">
+    <label class="control-label" for="events">Articles</label>
+    <%= select_tag "count", options_for_select(articles.collect{ |u| [u.title,u.id] }), multiple: true, class: 'form_input'%>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Save", data: { disable_with: "Please wait..." }, :onclick => "return update_data();"%>
+  </div>
+
+
+<script type="text/javascript">
+  function update_data (value) {
+    // var event_value = $(".form_input").val();
+    // var category = <%= params[:action] %>;
+    // console.log(event_value);
+    $.ajax({
+        type: 'post',
+        // data: { articles: $(".form_input").val(), category: "<%#= params[:action] %>" },
+        data: 'category=<%=params[:action]%>&articles='+$(".form_input").val(),
+        // url: '<%= url_for(:controller => :articles, :action => :update_category) %>',
+        url: 'update_category',
+        success: function(data) {
+          if(data){window.location.href = "/admin";}
+        },
+        error: function(data) {
+          alert("Update error!!! Please try again.");
+        }
+    });
+    return false;
+  };
+</script>

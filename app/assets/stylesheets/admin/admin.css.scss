@@ -55,6 +55,58 @@ height:auto;
 #right-content table {
   #border-top: 8px solid #254A73;
 }
+#menu li ul {
+  padding: 0px 0px 0px 15px;
+  margin: 0px;
+  list-style-type: initial;
+}
+.form_input {
+  width: 200px;
+}
+.control-group {
+  display: flex;
+  padding: 5px;
+}
+.control-label {
+  text-align: left;
+  width: 130px;
+}
 .clear {
   clear: both;
+}
+
+/******** General Setting *********/
+.r_margin_15{margin-right:15px;}
+.r_margin_30{margin-right:30px;}
+.pull-right{float: right;}
+.pull-left{float: left;}
+.row{padding-left: 0;margin-left: 0;margin-top: 4px;margin-bottom: 10px;}
+.controls{width: 500px;}
+
+/******* table ***********/
+table.altrowstable {
+  font-family: verdana,arial,sans-serif;
+  font-size:11px;
+  color:#333333;
+  border-width: 1px;
+  border-color: #a9c6c9;
+  border-collapse: collapse;
+}
+table.altrowstable th {
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #a9c6c9;
+}
+table.altrowstable td {
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #a9c6c9;
+}
+.oddrowcolor{
+  background-color:#d4e3e5;
+}
+.evenrowcolor{
+  background-color:#c3dde0;
 }

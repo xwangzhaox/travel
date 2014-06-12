@@ -1,35 +1,26 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%= @admin_article.title %>
-</p>
-
-<p>
-  <b>Content:</b>
-  <%= @admin_article.content %>
-</p>
-
-<p>
-  <b>Views:</b>
-  <%= @admin_article.views %>
-</p>
-
-<p>
-  <b>Like:</b>
-  <%= @admin_article.like %>
-</p>
-
-<p>
-  <b>Created at:</b>
-  <%= @admin_article.created_at %>
-</p>
-
-<p>
-  <b>Updated at:</b>
-  <%= @admin_article.updated_at %>
-</p>
-
-
-<%= link_to 'Edit', edit_admin_article_path(@admin_article) %> |
-<%= link_to 'Back', admin_articles_path %>
+<h1>Show Article</h1>
+<br />
+      <p id="notice"><%= notice %></p>
+      <div class="control-group">
+        <label class="control-label" for="events">title:</label>
+        <div class="controls">
+          <%= @admin_article.title %>      
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="events">Content:</label>
+        <div class="controls">
+          <%= @admin_article.content %>      
+        </div>
+      </div>
+      <div class="row t_margin_15">
+        <div class="pull-right r_margin_30">
+          
+            <div class="pull-left">
+              <%= link_to 'Back', admin_articles_path %> | 
+            </div>
+            <div class="pull-right">
+              <%= link_to 'Edit', edit_admin_article_path(@admin_article) %>
+            </div>
+        </div>
+      </div>

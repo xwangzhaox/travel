@@ -1,11 +1,26 @@
 class Admin::ArticlesController < ApplicationController
   layout "admin"
 
+  ['great_wall'].each do |menu|
+    define_method(menu) do
+      @page_title = menu.gsub(/\_/, " ").upcase
+      redirect_to :action => "edit", :id => Admin::Article.find_by_title(menu).id
+    end
+  end
+
+  Category.all.map(&:name).each do |category|
+    define_method(category.gsub(/ /, "_").downcase) do
+      @category = Category.find_by_name(category)
+      render :template => "admin/articles/category", :locals => {:articles => Admin::Article.all }
+    end
+  end
+
   # GET /admin/articles
   # GET /admin/articles.json  
   def index
-    @admin_articles = Admin::Article.all
-
+    except_articles = ['great_wall']
+    @admin_articles = Admin::Article.all.select{|x|!except_articles.include?(x.title)}
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @admin_articles }
@@ -81,5 +96,13 @@ class Admin::ArticlesController < ApplicationController
       format.html { redirect_to admin_articles_url }
       format.json { head :no_content }
     end
+  end
+
+  def update_category
+    category_title = params[:category].gsub(/_/, " ").upcase
+    Category.find_by_name(category_title).article_ids = params[:articles].split(",").collect{|x|x.to_i}
+    render :json => {
+      :connect_success => true
+    }
   end
 end

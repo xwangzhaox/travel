@@ -1,6 +1,15 @@
 <h1>Editing admin_article</h1>
+<br />
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @admin_article %> |
-<%= link_to 'Back', admin_articles_path %>
+<div class="row t_margin_15">
+  <div class="pull-right r_margin_30">
+      <div class="pull-left">
+        <%= link_to 'Back', admin_articles_path %> | 
+      </div>
+      <div class="pull-right">
+        <%= link_to 'Edit', edit_admin_article_path(@admin_article) %>
+      </div>
+  </div>
+</div>
