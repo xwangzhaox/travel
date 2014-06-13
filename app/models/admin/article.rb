@@ -4,4 +4,8 @@ class Admin::Article < ActiveRecord::Base
 
   has_many :article_category
   has_many :categories , :through => :article_category
+
+  def html_content
+    self.content.html_safe
+  end
 end
