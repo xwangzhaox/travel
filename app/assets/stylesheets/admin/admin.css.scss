@@ -64,13 +64,14 @@ height:auto;
   width: 200px;
 }
 .control-group {
-  display: flex;
   padding: 5px;
 }
 .control-label {
   text-align: left;
   width: 130px;
 }
+.controls { width: 700px; }
+.controls input { width: 700px; }
 .clear {
   clear: both;
 }
@@ -81,7 +82,7 @@ height:auto;
 .pull-right{float: right;}
 .pull-left{float: left;}
 .row{padding-left: 0;margin-left: 0;margin-top: 4px;margin-bottom: 10px;}
-.controls{width: 500px;}
+.display-flex { display: flex; }
 
 /******* table ***********/
 table.altrowstable {

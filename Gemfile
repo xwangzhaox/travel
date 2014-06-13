@@ -22,6 +22,10 @@ end
 
 gem 'jquery-rails'
 
+gem 'mime-types', '~> 1.17.2'
+gem 'ckeditor', :git => "https://github.com/galetahub/ckeditor.git"
+gem 'paperclip'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
