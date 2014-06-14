@@ -15,7 +15,7 @@
     <% @admin_articles.each do |admin_article| %>
       <tr>
         <td><%= admin_article.title %></td>
-        <td><%= admin_article.html_content %></td>
+        <td><%= admin_article.none_html_content %></td>
         <td><%= link_to 'Show', admin_article %></td>
         <td><%= link_to 'Edit', edit_admin_article_path(admin_article) %></td>
         <td><%= link_to 'Destroy', admin_article, method: :delete, data: { confirm: 'Are you sure?' } %></td>

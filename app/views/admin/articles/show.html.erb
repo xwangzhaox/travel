@@ -13,6 +13,9 @@
           <%= @admin_article.html_content %>      
         </div>
       </div>
+      <% @admin_article.tour_pictures.each do |x|%>
+        <%=  image_tag x.image(:normal)%>
+      <% end %>
       <div class="row t_margin_15">
         <div class="pull-right r_margin_30">
           

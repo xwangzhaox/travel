@@ -42,6 +42,7 @@ class Admin::ArticlesController < ApplicationController
   # GET /admin/articles/new.json
   def new
     @admin_article = Admin::Article.new
+    5.times { @admin_article.tour_pictures.build }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -52,6 +53,7 @@ class Admin::ArticlesController < ApplicationController
   # GET /admin/articles/1/edit
   def edit
     @admin_article = Admin::Article.find(params[:id])
+    5.times { @admin_article.tour_pictures.build }
   end
 
   # POST /admin/articles
