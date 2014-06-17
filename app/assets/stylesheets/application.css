@@ -491,3 +491,6 @@ line-height:0px;
 padding:0px;
 font-size:11px
 }
+.radius-boder {
+  border-radius: 5px;
+}

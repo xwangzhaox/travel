@@ -101,6 +101,7 @@ class Admin::ArticlesController < ApplicationController
 
   def update_category
     ["popular_tours", "hot_tours", "top_hotel_deals", "featured_tours"].each do |category|
+      next if params[category].nil?
       ids = params[category].split(",")
       category_title = category.gsub(/_/, " ").upcase
       Category.find_by_name(category_title).article_ids = ids

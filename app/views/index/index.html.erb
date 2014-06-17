@@ -1,19 +1,8 @@
         <img src="/assets/title7.gif" alt="" width="177" height="28" /><br />
-        <div class="photo">
-          <!-- <img src="/assets/photo1.jpg" alt="" width="194" height="111" /><br />
-          <a href="#">Paris, France</a> -->       
-          <%= image_tag Admin::Article.find(22).tour_pictures.first.image(:normal), :width=>"194", :height=>"111" %>
-          <a href=""><%= Admin::Article.find(22).title.gsub(/_/, " ").titleize%></a>
-        </div>
-        <div class="photo">
-          <img src="/assets/photo2.jpg" alt="" width="194" height="111" /><br />
-          <a href="#">Agia Napa, Cyprus</a>       
-        </div>
-        <div class="photo">
-          <img src="/assets/photo3.jpg" alt="" width="194" height="111" /><br />
-          <a href="#">Maldives</a>        
-        </div>
-        <div class="photo">
-          <img src="/assets/photo4.jpg" alt="" width="194" height="111" /><br />
-          <a href="#">Miami</a>       
-        </div>
+        <% Category.find_by_name("Featured Tours").articles.each do |article| %>
+          <% next if article.tour_pictures.first.nil? %>
+          <div class="photo">
+            <%= image_tag article.tour_pictures.first.image(:normal), :width=>"194", :height=>"111", class: "radius-boder" %>
+            <%= link_to article.title.gsub(/_/, " ").titleize, {:controller=>"index", :action=>article.title.gsub(/ /, "_").downcase} %>
+          </div>
+        <% end %>
