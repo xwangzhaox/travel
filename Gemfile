@@ -22,6 +22,8 @@ end
 
 gem 'jquery-rails'
 
+gem 'chosen-rails'
+
 gem 'mime-types', '~> 1.17.2'
 gem 'ckeditor', :git => "https://github.com/galetahub/ckeditor.git"
 gem 'paperclip'

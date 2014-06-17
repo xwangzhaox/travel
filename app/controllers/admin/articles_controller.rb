@@ -1,18 +1,16 @@
 class Admin::ArticlesController < ApplicationController
   layout "admin"
 
-  ['great_wall'].each do |menu|
-    define_method(menu) do
-      @page_title = menu.gsub(/\_/, " ").upcase
-      redirect_to :action => "edit", :id => Admin::Article.find_by_title(menu).id
-    end
-  end
-
   Category.all.map(&:name).each do |category|
     define_method(category.gsub(/ /, "_").downcase) do
       @category = Category.find_by_name(category)
       render :template => "admin/articles/category", :locals => {:articles => Admin::Article.all }
     end
+  end
+
+  def category
+    @categories = Category.all
+    @articles = Admin::Article.all
   end
 
   # GET /admin/articles
@@ -76,6 +74,7 @@ class Admin::ArticlesController < ApplicationController
   # PUT /admin/articles/1.json
   def update
     @admin_article = Admin::Article.find(params[:id])
+    @admin_article.format_title = @admin_article.title.gsub(/ /,"_").downcase
 
     respond_to do |format|
       if @admin_article.update_attributes(params[:admin_article])
@@ -101,8 +100,11 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def update_category
-    category_title = params[:category].gsub(/_/, " ").upcase
-    Category.find_by_name(category_title).article_ids = params[:articles].split(",").collect{|x|x.to_i}
+    ["popular_tours", "hot_tours", "top_hotel_deals", "featured_tours"].each do |category|
+      ids = params[category].split(",")
+      category_title = category.gsub(/_/, " ").upcase
+      Category.find_by_name(category_title).article_ids = ids
+    end
     render :json => {
       :connect_success => true
     }

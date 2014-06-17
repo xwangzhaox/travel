@@ -15,7 +15,7 @@ class IndexController < ApplicationController
     define_method(menu) do
       @page_title = menu.gsub(/\_/, " ").titleize
       begin
-        @content = Admin::Article.find_by_title(menu).html_content  
+        @content = Admin::Article.find_by_format_title(menu).html_content  
       rescue Exception => e
         p @content
       end

@@ -1,7 +1,9 @@
         <img src="/assets/title7.gif" alt="" width="177" height="28" /><br />
         <div class="photo">
-          <img src="/assets/photo1.jpg" alt="" width="194" height="111" /><br />
-          <a href="#">Paris, France</a>       
+          <!-- <img src="/assets/photo1.jpg" alt="" width="194" height="111" /><br />
+          <a href="#">Paris, France</a> -->       
+          <%= image_tag Admin::Article.find(22).tour_pictures.first.image(:normal), :width=>"194", :height=>"111" %>
+          <a href=""><%= Admin::Article.find(22).title.gsub(/_/, " ").titleize%></a>
         </div>
         <div class="photo">
           <img src="/assets/photo2.jpg" alt="" width="194" height="111" /><br />

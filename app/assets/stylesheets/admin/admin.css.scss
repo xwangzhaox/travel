@@ -68,12 +68,19 @@ height:auto;
 }
 .control-label {
   text-align: left;
-  width: 130px;
+  width: 200px;
 }
 .controls { width: 700px; }
 .controls input { width: 700px; }
 .clear {
   clear: both;
+}
+.category-label {
+  font-size: small;
+  display: block;
+  padding-top: 5px;
+  font-style: italic;
+  color: yellowgreen;
 }
 
 /******** General Setting *********/

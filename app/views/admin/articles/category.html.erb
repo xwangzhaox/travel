@@ -1,25 +1,29 @@
-<h1>Select articles for popular tour</h1>
+<h1>Select Articles for Category</h1>
 <br />
-  <div class="control-group">
-    <label class="control-label" for="events">Articles</label>
-    <%= select_tag "count", options_for_select(articles.collect{ |u| [u.title,u.id] }), multiple: true, class: 'form_input'%>
+
+<% @categories.each do |category| %>
+  <div class="control-group display-flex">
+    <label class="control-label" for="events">
+      <%= category.name.titleize %>
+      <span class="category-label">(Please select <%= category.row_num %> articles for this category.)</span>
+    </label>
+    <div class="controls">
+      <%= select_tag category.name.gsub(/ /, "_").downcase, options_for_select(@articles.collect{|u|[u.title,u.id]}, :selected => category.articles.map(&:id)), class: 'chzn-select', style:"width:500px", multiple: true%>
+    </div>
   </div>
+<% end %>
+
   <div class="actions">
     <%= submit_tag "Save", data: { disable_with: "Please wait..." }, :onclick => "return update_data();"%>
   </div>
 
-
 <script type="text/javascript">
   function update_data (value) {
-    // var event_value = $(".form_input").val();
-    // var category = <%= params[:action] %>;
-    // console.log(event_value);
+    console.log('popular_tours_articles='+$("#popular_tours").val()+'&hot_tours_articles='+$("#hot_tours").val()+'&top_hotel_deals_articles='+$("#top_hotel_deals").val()+'&featured_tours_articles='+$("#featured_tours").val());
     $.ajax({
         type: 'post',
-        // data: { articles: $(".form_input").val(), category: "<%#= params[:action] %>" },
-        data: 'category=<%=params[:action]%>&articles='+$(".form_input").val(),
-        // url: '<%= url_for(:controller => :articles, :action => :update_category) %>',
-        url: 'update_category',
+        data: 'popular_tours='+$("#popular_tours").val()+'&hot_tours='+$("#hot_tours").val()+'&top_hotel_deals='+$("#top_hotel_deals").val()+'&featured_tours='+$("#featured_tours").val(),
+        url: 'articles/update_category',
         success: function(data) {
           if(data){window.location.href = "/admin";}
         },
@@ -30,3 +34,4 @@
     return false;
   };
 </script>
+<script type="text/javascript">$(".chzn-select").chosen(); </script>

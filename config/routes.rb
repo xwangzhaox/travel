@@ -3,10 +3,11 @@ Travel::Application.routes.draw do
   namespace :admin do
     root :to => "articles#index"
 
-    get 'articles/great_wall', :controller => 'articles', :action => 'great_wall'
+    get 'category', :controller => 'articles', :action => 'category'
     get 'articles/popular_tours', :controller => 'articles', :action => 'popular_tours'
     get 'articles/hot_tours', :controller => 'articles', :action => 'hot_tours'
     get 'articles/top_hotel_deals', :controller => 'articles', :action => 'top_hotel_deals'
+    get 'articles/featured_tours', :controller => 'articles', :action => 'featured_tours'
     get 'articles/category', :controller => 'articles', :action => 'category'
     match 'articles/update_category', :controller => 'articles', :action => 'update_category'
 
