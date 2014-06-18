@@ -8,6 +8,7 @@ class TourPicture < ActiveRecord::Base
       :max => "600x400>",
       :normal => "180x180>",
       :s120 => "120x120#",
+      :hot_tour => "108x53>",
       :s48 => "48x48#",
       :s32 => "32x32#",
       :s16 => "16x16#"

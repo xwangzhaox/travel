@@ -18,7 +18,7 @@
               <li><a href="#">Kongfu&acrobatics Tour</a></li>
               <li><a href="#">Beijing Opera</a></li> -->
             </ul>
-            <a href="#" class="more">more tours</a>
+            <a href="#" class="more"></a>
           </div>
         </div>
         <div class="column c2">
@@ -26,8 +26,12 @@
             <h4 class="title2">Hot Tours</h4>
             <% @hot_tours_name.each do |hot_tour| %>
               <div class="pic">
-                <a href="#"><img src="/assets/pic1.jpg" alt="" width="108" height="53" /></a><br />
-                <span><%= link_to hot_tour.title.gsub(/_/, " ").titleize, "#"%></span>
+                <% if hot_tour.tour_pictures.empty? %>
+                  <a href="#"><img src="/assets/pic1.jpg" alt="" width="108" height="53" /></a>
+                <% else %>
+                  <%= image_tag hot_tour.tour_pictures.first.image(:s120), size: "108x53" %><br />
+                <% end %>
+                <span><%= link_to hot_tour.title.gsub(/_/, " ").titleize, {:controller=>"index", :action=>hot_tour.title.gsub(/ /, "_").downcase} %></span>
               </div>
             <% end %>
             <!-- <div class="pic">
@@ -42,7 +46,7 @@
               <a href="#"><img src="/assets/pic3.jpg" alt="" width="108" height="53" /></a><br />
               <span><a href="#">Russia</a></span>
             </div> -->
-            <a href="#" class="more">more hot tours</a>
+            <a href="#" class="more"></a>
           </div>
         </div>
         <div class="column c3">
@@ -50,7 +54,7 @@
             <h4 class="title3">Top Hotel Deals</h4>
             <ul>
               <% @top_hotel_deals_name.each do |top_hotel_deal| %>
-                <li><%= link_to top_hotel_deal.title.gsub(/_/, " ").titleize, "#"%></li>  
+                <li><%= link_to top_hotel_deal.title.gsub(/_/, " ").titleize, {:controller=>"index", :action=>top_hotel_deal.title.gsub(/ /, "_").downcase} %></li>  
               <% end %>
               <!-- <li><a href="#">Beijing Tianjin Tour</a></li>
               <li><a href="#">Beijing Xi’an Tour</a></li>
@@ -60,6 +64,6 @@
               <li><a href="#">Beijing Dalian Tour</a></li>
               <li><a href="#">Great Wall Hiking</a></li> -->
             </ul>
-            <a href="#" class="more">more hotels</a>
+            <a href="#" class="more"></a>
           </div>
         </div>
