@@ -11,6 +11,8 @@ Travel::Application.routes.draw do
     get 'articles/category', :controller => 'articles', :action => 'category'
     match 'articles/update_category', :controller => 'articles', :action => 'update_category'
 
+    match 'articles/:id/delete_image/:image_id', :controller => 'articles', :action => 'delete_image', :as => "delete_image"
+
     resources :articles
   end
 

@@ -25,33 +25,32 @@
     </div>
   </div>
   <br />
+  <% @admin_article.tour_pictures.each do |x|%>
+    <%= image_tag x.image(:normal) if !x.id.nil?%>
+    <%#= link_to( "x", {:controller => "articles", :action => "delete_image"}) %>
+    <% if !x.id.nil? %>
+    <%= link_to 'X', admin_delete_image_path(@admin_article.id, x) %>
+    <% end %>
+  <% end %>
+
   <div class="newPaperclipFiles">
+    <%= f.fields_for :tour_pictures do |asset| %>
+      <% if asset.object.new_record? %>
+        <%= asset.file_field :image %>
+      <% end %>
+    <% end %>
+  </div>
 
-        <%= f.fields_for :tour_pictures do |asset| %>
-        
-           <% if asset.object.new_record? %>
-                 <%= asset.file_field :image %>
-           <% end %>
-
-       <% end %>
-
-</div>
-
-<div class="existingPaperclipFiles">
-        
-     <% f.fields_for :tour_pictures do |asset| %>
-          <% unless asset.object.new_record? %>
-        
-                <div class="thumbnail">
-
-                        <%= link_to( image_tag(asset.object.image.url(:thumb)), asset.object.image.url(:original) ) %>
-                        <%#= asset.check_box :_delete %>
-                </div>
-                
-          <% end %>        
-        
-     <% end %>
-</div>
+  <div class="existingPaperclipFiles">
+    <% f.fields_for :tour_pictures do |asset| %>
+      <% unless asset.object.new_record? %>
+        <div class="thumbnail">
+          <%= link_to( image_tag(asset.object.image.url(:thumb)), asset.object.image.url(:original) ) %>
+          <%#= asset.check_box :_delete %>
+        </div>
+      <% end %>        
+    <% end %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>

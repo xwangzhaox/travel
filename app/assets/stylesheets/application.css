@@ -494,3 +494,6 @@ font-size:11px
 .radius-boder {
   border-radius: 5px;
 }
+
+/******** General Setting *********/
+.t_padding_20 {padding-top: 20px;} 

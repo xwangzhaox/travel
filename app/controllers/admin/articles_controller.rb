@@ -110,4 +110,15 @@ class Admin::ArticlesController < ApplicationController
       :connect_success => true
     }
   end
+
+  def delete_image
+    @tour_picture = TourPicture.find(params[:image_id])
+    @tour_picture.image.destroy
+    @tour_picture.image.clear
+    @tour_picture.delete
+    respond_to do |format|
+      format.html { redirect_to edit_admin_article_path(params[:id]) }
+      format.json { head :no_content }
+    end
+  end
 end

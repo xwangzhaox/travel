@@ -5,6 +5,7 @@ class TourPicture < ActiveRecord::Base
   has_attached_file :image,
     :default_style => :s120,
     :styles => {
+      :max => "600x400>",
       :normal => "180x180>",
       :s120 => "120x120#",
       :s48 => "48x48#",

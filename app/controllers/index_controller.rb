@@ -14,11 +14,11 @@ class IndexController < ApplicationController
   ['about_company', 'hot_tours', 'hotels', 'car_rental', 'contact_us'].each do |menu|
     define_method(menu) do
       @page_title = menu.gsub(/\_/, " ").titleize
-      begin
-        @content = Admin::Article.find_by_format_title(menu).html_content  
-      rescue Exception => e
-        p @content
-      end
+        begin
+          @article = Admin::Article.find_by_format_title(menu)
+        rescue Exception => e
+          @article = Admin::Article.find_by_format_title(menu.to_s.gsub(/\_/, " ").titleize)
+        end
       render :template => "index/tour"
     end
   end
@@ -28,9 +28,9 @@ class IndexController < ApplicationController
       self.class.send :define_method, method_id do
         @page_title = method_id.to_s.gsub(/\_/, " ").titleize
         begin
-          @content = Admin::Article.find_by_title(method_id).html_content
+          @article = Admin::Article.find_by_format_title(method_id)
         rescue Exception => e
-          @content = Admin::Article.find_by_title(method_id.to_s.gsub(/\_/, " ").titleize).html_content
+          @article = Admin::Article.find_by_format_title(method_id.to_s.gsub(/\_/, " ").titleize)
         end
         render :template => "index/tour"
       end

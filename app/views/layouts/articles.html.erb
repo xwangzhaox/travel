@@ -3,9 +3,12 @@
 <html>
 <head>
 	<%= stylesheet_link_tag "application" %>
+	<%= javascript_include_tag "jquery" %>
 <title>Travel - About</title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
-<link rel="stylesheet" type="text/css" href="style.css" />
+<%= stylesheet_link_tag "flexslider" %>
+<%#= javascript_include_tag "jquery.flexslider-min" %>
+<%= javascript_include_tag "jquery.flexslider" %>
 </head>
 
 <body>
@@ -15,24 +18,41 @@
 	<div id="content">
   	  <div id="main">
 	  		<p><a href="#" class="style4">Tours</a>  &raquo; <%= @page_title %></p>
-		 	 <div id="gallery">
-				  <img src="/assets/big.jpg" alt="" width="476" height="355" />
-				  <div>
-				  	<a href="#"><img src="/assets/p1.jpg" alt="" /></a>
-				  	<a href="#"><img src="/assets/p2.jpg" alt="" /></a>
-				  	<a href="#"><img src="/assets/p3.jpg" alt="" /></a>
-				  	<a href="#"><img src="/assets/p4.jpg" alt="" /></a>
-				  	<a href="#"><img src="/assets/p5.jpg" alt="" /></a>
-				  	<a href="#"><img src="/assets/p6.jpg" alt="" /></a>
-				  	<a href="#"><img src="/assets/p7.jpg" alt="" /></a>
-				  	<a href="#"><img src="/assets/p8.jpg" alt="" /></a>
-					<a href="#" class="view">View Gallery</a>
-				  </div>
+		 	 <div>
+		 	 	<!-- Place somewhere in the <body> of your page -->
+		 	 	<% if !@article.nil? and !@article.tour_pictures.empty? %>
+					<div id="slider" class="flexslider t_padding_20">
+					  <ul class="slides">
+					  	<% @article.tour_pictures.each do |picture| %>
+					  		<% next if picture.nil? %>
+						    <li class="centered">
+						      <%= image_tag picture.image(:max)%>
+						    </li>
+					    <% end %>
+					  </ul>
+					</div>
+				<% end %>
+				<!-- <div id="carousel" class="flexslider">
+				  <ul class="slides">
+				    <li>
+				      <img src="/assets/p3.jpg" alt="" />
+				    </li>
+				    <li>
+				      <img src="/assets/p3.jpg" alt="" />
+				    </li>
+				    <li>
+				      <img src="/assets/p3.jpg" alt="" />
+				    </li>
+				    <li>
+				      <img src="/assets/p3.jpg" alt="" />
+				    </li>
+				  </ul>
+				</div> -->
 		 	 </div>
-			 <div class="about">
+			 <div class="about t_padding_20">
 			   <a href="#" id="banner"><img src="/assets/banner.jpg" alt="" width="187" height="301" /></a>
 			   <h1><%= @page_title %></h1>
-			   <p><%= @content %></p>
+			   <p><%= @article.html_content %></p>
 			 </div>
 	  </div>
 		<div id="sidebar">
@@ -71,3 +91,25 @@
 	</div>
 </body>
 </html>
+<script type="text/javascript">
+	$(window).load(function() {
+  // The slider being synced must be initialized first
+  // $('#carousel').flexslider({
+  //   animation: "slide",
+  //   controlNav: false,
+  //   animationLoop: false,
+  //   slideshow: false,
+  //   itemWidth: 210,
+  //   itemMargin: 5,
+  //   asNavFor: '#slider'
+  // });
+   
+  $('#slider').flexslider({
+    animation: "slide",
+    controlNav: true,
+    animationLoop: true,
+    slideshow: true,
+    sync: "#carousel"
+  });
+});
+</script>
