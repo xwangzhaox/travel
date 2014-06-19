@@ -515,7 +515,16 @@ width: 402px;
   font-style: italic;
   font-weight: 600;
 }
-#contact_us .contact-body h2 { font-size: xx-large; float: right; padding-top: 140px;}
+#contact_us .contact-body h2 { font-size: xx-large; float: right; padding-top: 10px;}
+.block_title {font-weight: initial;}
+.talk_online {
+  margin: 100px 5px 0px 0px;
+  background-color: white;
+  padding: 5px;
+  width: 105px;
+  border-radius: 7px;
+  filter:alpha(Opacity=80);-moz-opacity:0.8;opacity: 0.8;-khtml-opacity: 0.3;
+}
 
 /******** General Setting *********/
 .t_padding_20 {padding-top: 20px;} 

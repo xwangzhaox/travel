@@ -1,4 +1,4 @@
-        <img src="/assets/title7.gif" alt="" width="177" height="28" /><br />
+        <h1 class="block_title">Featured Tours</h1>
         <% Category.find_by_name("Featured Tours").articles.each do |article| %>
           <% next if article.tour_pictures.first.nil? %>
           <div class="photo">
