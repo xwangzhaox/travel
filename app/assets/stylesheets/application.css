@@ -214,8 +214,10 @@ overflow:hidden;
 width:384px;
 height:247px;
 float:left;
-margin:0 0 25px 0;
-padding:29px 0 0 38px;
+/*margin:0 0 25px 0;
+padding:29px 0 0 38px;*/
+padding: 10px 30px 20px 8px;
+margin: 0px;
 background-image:url(search_bg.gif);
 background-position:top left;
 background-repeat:no-repeat;
@@ -494,6 +496,26 @@ font-size:11px
 .radius-boder {
   border-radius: 5px;
 }
+
+/************* Contact us *************/
+#contact_us {
+position: inherit;
+background-image: url(6th-hole-fade1.jpg);
+background-position: top left;
+background-repeat: no-repeat;
+background-size: cover;
+height: 253px;
+border-radius: 5px;
+width: 402px;
+}
+
+#contact_us .contact-body {
+  padding: 20px;
+  font-family: inherit;
+  font-style: italic;
+  font-weight: 600;
+}
+#contact_us .contact-body h2 { font-size: xx-large; float: right; padding-top: 140px;}
 
 /******** General Setting *********/
 .t_padding_20 {padding-top: 20px;} 
