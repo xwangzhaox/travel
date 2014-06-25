@@ -21,7 +21,7 @@
       <% if params[:action]=="scenic_spots" %>
         <%= select_tag category.name.gsub(/ /, "_").downcase, options_for_select(@articles.collect{|u|[u.title,u.id]}, :selected => category.articles.map(&:id)), class: 'chzn-select', style:"width:500px", multiple: true%>
       <% else %>
-        <%= select_tag category.name.gsub(/ /, "_").downcase, options_for_select(Category.find_all_by_scenic_spots(1).collect{|u|[u.name,u.id]}, :selected => category.super_category.split(",")), class: 'chzn-select', style:"width:500px", multiple: true%>
+        <%= select_tag category.name.gsub(/ /, "_").downcase, options_for_select(Category.find_all_by_scenic_spots(1).collect{|u|[u.name,u.id]}, :selected => (category.super_category.split(",").present? ? category.super_category.split(",") : nil)), class: 'chzn-select', style:"width:500px", multiple: true%>
       <% end %>
     </div>
   </div>
