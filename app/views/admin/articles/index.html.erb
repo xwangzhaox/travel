@@ -1,6 +1,9 @@
+<% @admin_articles=articles if @admin_articles.nil? %>
 <div id="right-title">
     <h2>Listing admin_articles</h2>
-    <%= link_to 'New Article', new_admin_article_path %>
+    <% if params[:action]=="tourist_route" %>
+        <%= link_to 'New Article', new_admin_article_path %>
+    <% end %>
 </div>
 <div id="right-content">
     <table  class="altrowstable" id="alternatecolor">

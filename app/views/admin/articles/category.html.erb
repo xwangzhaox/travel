@@ -1,16 +1,28 @@
   <SCRIPT src="http://code.jquery.com/jquery-migrate-1.1.1.js"></SCRIPT>
   <%= stylesheet_link_tag "admin/chosen" %>
-<h1>Select Articles for Category</h1>
+<% if params[:action]=="scenic_spots" %>
+  <h1>Select Tourist Route for Scenic Spots</h1>
+  <%= link_to 'New Scenic Spots', new_admin_category_path, {:class=>"pull-right"} %>
+<% else %>
+  <h1>Select Articles for Category</h1>
+<% end %>
 <br />
 
 <% @categories.each do |category| %>
   <div class="control-group display-flex">
     <label class="control-label" for="events">
       <%= category.name.titleize %>
+      <% if params[:action]=="scenic_spots" %>
+        (<%= link_to 'Eidt',edit_admin_category_path(category)%>&nbsp;|&nbsp;<%= link_to 'Delete',admin_destroy_path(category) , method: :delete, data: { confirm: 'Are you sure?' }%>)
+      <% end %>
       <span class="category-label">(Please select <%= category.row_num %> articles for this category.)</span>
     </label>
     <div class="controls">
-      <%= select_tag category.name.gsub(/ /, "_").downcase, options_for_select(@articles.collect{|u|[u.title,u.id]}, :selected => category.articles.map(&:id)), class: 'chzn-select', style:"width:500px", multiple: true%>
+      <% if params[:action]=="scenic_spots" %>
+        <%= select_tag category.name.gsub(/ /, "_").downcase, options_for_select(@articles.collect{|u|[u.title,u.id]}, :selected => category.articles.map(&:id)), class: 'chzn-select', style:"width:500px", multiple: true%>
+      <% else %>
+        <%= select_tag category.name.gsub(/ /, "_").downcase, options_for_select(Category.find_all_by_scenic_spots(1).collect{|u|[u.name,u.id]}, :selected => category.super_category.split(",")), class: 'chzn-select', style:"width:500px", multiple: true%>
+      <% end %>
     </div>
   </div>
 <% end %>
@@ -21,10 +33,10 @@
 
 <script type="text/javascript">
   function update_data (value) {
-    console.log('popular_tours_articles='+$("#popular_tours").val()+'&hot_tours_articles='+$("#hot_tours").val()+'&top_hotel_deals_articles='+$("#top_hotel_deals").val()+'&featured_tours_articles='+$("#featured_tours").val());
+    var require_str = <%= @require_str %>;
     $.ajax({
         type: 'post',
-        data: 'popular_tours='+$("#popular_tours").val()+'&hot_tours='+$("#hot_tours").val()+'&top_hotel_deals='+$("#top_hotel_deals").val()+'&featured_tours='+$("#featured_tours").val(),
+        data: require_str,
         url: 'articles/update_category',
         success: function(data) {
           if(data){window.location.href = "/admin";}

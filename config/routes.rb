@@ -4,15 +4,19 @@ Travel::Application.routes.draw do
     root :to => "articles#index"
 
     get 'category', :controller => 'articles', :action => 'category'
+    get 'scenic_spots', :controller => 'articles', :action => 'scenic_spots'
+    get 'tourist_route', :controller => 'articles', :action => 'tourist_route'
     get 'articles/popular_tours', :controller => 'articles', :action => 'popular_tours'
     get 'articles/hot_tours', :controller => 'articles', :action => 'hot_tours'
     get 'articles/top_hotel_deals', :controller => 'articles', :action => 'top_hotel_deals'
     get 'articles/featured_tours', :controller => 'articles', :action => 'featured_tours'
     get 'articles/category', :controller => 'articles', :action => 'category'
     match 'articles/update_category', :controller => 'articles', :action => 'update_category'
-
     match 'articles/:id/delete_image/:image_id', :controller => 'articles', :action => 'delete_image', :as => "delete_image"
 
+    match 'categories/destroy/:id',  to: 'categories#destroy', as: :destroy
+
+    resources :categories, except: :destroy
     resources :articles
   end
 

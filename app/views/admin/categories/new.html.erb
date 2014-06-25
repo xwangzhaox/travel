@@ -1,0 +1,28 @@
+<h1>New Scenic Spots</h1>
+<br />
+<%= form_for( @category, :url => { :action => "create" } ) do |f| %>
+  <% if @category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+      <% @category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <label class="control-label" for="events"><%= f.label :name %></label>
+    <div class="controls">
+      <%= f.text_field :name %>  
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+<a href="/admin/scenic_spots">Back</a>

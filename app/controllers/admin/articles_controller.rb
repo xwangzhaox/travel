@@ -7,17 +7,49 @@ class Admin::ArticlesController < ApplicationController
       render :template => "admin/articles/category", :locals => {:articles => Admin::Article.all }
     end
   end
+  
+  def tourist_route
+    articles = Admin::Article.all.select{|x|x.is_tourist_route==true}
+    render :template => "admin/articles/index", :locals => {:articles => articles}
+  end
 
+  def scenic_spots
+    @categories = Category.all.select{|x|x.scenic_spots==true}    #scenic_spots
+    @articles = Admin::Article.all.select{|x|x.is_tourist_route==true}   #tourist_route
+    @require_str = ""
+    @categories.each do |category|
+      if category.id == @categories.first.id
+        @require_str += "\'#{category.format_name}=\'+$(\'##{category.format_name}\').val()"
+      else
+        @require_str += "+\'&#{category.format_name}=\'+$(\'##{category.format_name}\').val()"
+      end
+    end
+    @require_str += "+\"&from=scenic_spots\""
+    @require_str = @require_str.html_safe
+    render :template => "admin/articles/category"
+  end
+
+  # Column Menu
   def category
-    @categories = Category.all
-    @articles = Admin::Article.all
+    @categories = Category.all.select{|x|x.scenic_spots==false}
+    @articles = Admin::Article.all.select{|x|x.is_tourist_route==true}
+
+    @require_str = ""
+    @categories.each do |category|
+      if category.id == @categories.first.id
+        @require_str += "\'#{category.format_name}=\'+$(\'##{category.format_name}\').val()"
+      else
+        @require_str += "+\'&#{category.format_name}=\'+$(\'##{category.format_name}\').val()"
+      end
+    end
+    @require_str += "+\"&from=category\""
+    @require_str = @require_str.html_safe
   end
 
   # GET /admin/articles
   # GET /admin/articles.json  
   def index
-    except_articles = ['great_wall']
-    @admin_articles = Admin::Article.all.select{|x|!except_articles.include?(x.title)}
+    @admin_articles = Admin::Article.all.select{|x|x.is_tourist_route==false}
     
     respond_to do |format|
       format.html # index.html.erb
@@ -100,11 +132,15 @@ class Admin::ArticlesController < ApplicationController
   end
 
   def update_category
-    ["popular_tours", "hot_tours", "top_hotel_deals", "featured_tours"].each do |category|
-      next if params[category].nil?
-      ids = params[category].split(",")
-      category_title = category.gsub(/_/, " ").upcase
-      Category.find_by_name(category_title).article_ids = ids
+    Category.all.each do |category|
+      next if params[category.format_name].nil?
+      ids = params[category.format_name].split(",")
+      if params[:from]=="category"
+        category.super_category = params[category.format_name]
+        category.save
+      else
+        Category.find_by_format_name(category.format_name).article_ids = ids 
+      end
     end
     render :json => {
       :connect_success => true
