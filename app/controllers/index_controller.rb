@@ -4,7 +4,7 @@ class IndexController < ApplicationController
   def index
     @promotions = Admin::Article.find_by_title("News & Promotions").html_content
     @travel_guide = Admin::Article.find_by_title("travel_guide").html_content
-    @popular_tours_name   = Category.find_by_name("POPULAR TOURS").articles
+    @popular_tours_name   = Category.find_by_name("POPULAR TOURS").sub_categories
     @hot_tours_name       = Category.find_by_name("HOT TOURS").articles
     @top_hotel_deals_name = Category.find_by_name("TOP HOTEL DEALS").articles
 
@@ -33,6 +33,14 @@ class IndexController < ApplicationController
           @article = Admin::Article.find_by_format_title(method_id.to_s.gsub(/\_/, " ").titleize)
         end
         render :template => "index/tour"
+      end
+      self.send(method_id)
+    elsif Category.all.map{|x|"#{x.format_name}_category"}.include?(method_id.to_s)
+      self.class.send :define_method, method_id do
+        @category = Category.find_by_format_name(method_id[0..-10])
+        @page_title = method_id.to_s.gsub(/\_/, " ").titleize
+        @articles = @category.articles
+        render :template => "index/category", :layout => 'category'
       end
       self.send(method_id)
     else

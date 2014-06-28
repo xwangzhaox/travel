@@ -2,8 +2,8 @@
           <div>
             <h4 class="title1">Popular Tours</h4>
             <ul>
-              <% @popular_tours_name.each do |popular_tour| %>
-                <li><%= link_to popular_tour.title.gsub(/_/, " ").titleize, {:controller=>"index", :action=>popular_tour.title.gsub(/ /, "_").downcase} %></li>  
+              <% @popular_tours_name.each do |category| %>
+                <li><%= link_to category.name, {:controller=>"index", :action=>"#{category.format_name}_category"} %></li>  
               <% end %>
               <!-- <li><a href="#">Great Wall of CHINA</a></li>
               <li><a href="#">Forbidden City</a></li>

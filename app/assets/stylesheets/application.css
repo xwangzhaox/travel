@@ -528,3 +528,9 @@ width: 402px;
 
 /******** General Setting *********/
 .t_padding_20 {padding-top: 20px;} 
+
+/********* Article Item **********/
+.article_block {margin-top: 30px;}
+.block_left {float: left;width: 140px;}
+.block_right {padding: 10px;width: 80%;}
+.block_right .article_content p {line-height: 16px;}

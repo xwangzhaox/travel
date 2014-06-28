@@ -1,0 +1,39 @@
+<% if !@articles.nil? %>
+  <div id="slider" class="flexslider t_padding_20">
+    <ul class="slides">
+      <% @articles.each do |article| %>
+        <% article.tour_pictures.each do |picture| %>
+          <% next if picture.nil? %>
+          <li class="centered">
+            <%= image_tag picture.image(:max)%>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="about t_padding_20">
+  <!-- <a href="#" id="banner"><img src="/assets/banner.jpg" alt="" width="187" height="301" /></a> -->
+  <h1><%= @page_title %></h1>
+  <p><%= @category.description.html_safe %></p>
+</div>
+
+<% @articles.each do |article| %>
+  <div class="article_block">
+    <div class="block_left img">
+      <% if article.tour_pictures.present? %>
+        <%= image_tag article.tour_pictures.first.image(:s120) %>
+      <% else %>
+        <img src="/assets/nil_image.jpg" alt="" width="120" height="120" />
+      <% end %>
+    </div>
+    <div class="block_right">
+      <div class="article_title">
+        <%= link_to article.title, {:controller=>"index", :action=>article.format_title} %>
+      </div>
+      <div class="article_content">
+        <%= article.none_html_content %>
+      </div>
+    </div>
+  </div>
+<% end %>

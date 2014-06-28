@@ -2,10 +2,11 @@ class Admin::CategoriesController < ApplicationController
   layout "admin"
 
   def show
-    @category = Category.find(params[:id])
+    @category = Category.find_by_format_name(params[:format_name])
+    @page_title = @category.name
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :layout => 'category' }# show.html.erb
       format.json { render json: @category }
     end
   end

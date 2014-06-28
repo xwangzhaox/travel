@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "jquery" %>
+<title>Travel - About</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<%= stylesheet_link_tag "flexslider" %>
+<%#= javascript_include_tag "jquery.flexslider-min" %>
+<%= javascript_include_tag "jquery.flexslider" %>
+</head>
+
+<body>
+  <div id="header">
+    <%= render :partial => "layouts/shared/header" %>
+  </div>
+  <div id="content">
+      <div id="main">
+        <p><a href="#" class="style4">Tours</a>  &raquo; <%= @page_title %></p>
+       <%= yield %>
+    </div>
+    <div id="sidebar">
+      <div class="news">
+        <h1 class="block_title">News</h1>
+        <div>
+          <span>25 march</span>
+          <p>Lorem ipsum dolor sit amet, sectetu adip scing varius interdum incid unt quis, libero. Aenean mturpis. Maecenas hendrerit masa laoreet iaculipede mnisl ulamcorper. Tellus er sodales enim, in tincidunt mauris.</p>
+          <a href="#" class="more2">more info</a>
+        </div>
+        <div>
+          <span>12 march</span>
+          <p>Lorem ipsum dolor sit amet, sectetu adip scing varius interdum incid unt quis, libero. Aenean mturpis. Maecenas hendrerit masa laoreet iaculipede mnisl ulamcorper. Tellus er sodales enim, in tincidunt mauris.</p>
+          <a href="#" class="more2">more info</a>
+        </div>
+        <a href="#" id="all">all news</a>
+      </div>
+      <div>
+        <h1 class="block_title">Airport Information</h1>
+        <p>Lorem ipsum dolor sit amet, sectetu adip scing varius interdum incid unt quis, libero. Aenean mturpis. Maecenas hendrerit masa laoreet iaculipede mnisl ulamcorper. Tellus er sodales enim, in tincidunt mauris in odio. Massa ac laoreet iaculipede nisl ullamcorpermassa, ac consectetuer feipsum eget pede.  Proin nunc. Donec massa. Nulla pulvinar, nisl ac convallis nonummy, tellus eros sodales enim, in tincidunt mauris in odio.  massa ac laoreet iaculipede nisl ullamcorpermassa,consectetuer feipsum eget pede. Proin nunc. Donec massa. Nulla pulvinar, nisl ac convallis nonummy, tellus eros sodales enim, in tincidunt.</p>
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    <%= render :partial => "layouts/shared/footer" %>             
+  </div>
+</body>
+</html>
+<script type="text/javascript">
+  $(window).load(function() {
+  // The slider being synced must be initialized first
+  // $('#carousel').flexslider({
+  //   animation: "slide",
+  //   controlNav: false,
+  //   animationLoop: false,
+  //   slideshow: false,
+  //   itemWidth: 210,
+  //   itemMargin: 5,
+  //   asNavFor: '#slider'
+  // });
+   
+  $('#slider').flexslider({
+    animation: "slide",
+    controlNav: true,
+    animationLoop: true,
+    slideshow: true,
+    sync: "#carousel"
+  });
+});
+</script>
