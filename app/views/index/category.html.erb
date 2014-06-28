@@ -15,7 +15,7 @@
 <div class="about t_padding_20">
   <!-- <a href="#" id="banner"><img src="/assets/banner.jpg" alt="" width="187" height="301" /></a> -->
   <h1><%= @page_title %></h1>
-  <p><%= @category.description.html_safe %></p>
+  <p><%= @category.description.nil? ? "Null Description" : @category.description.html_safe %></p>
 </div>
 
 <% @articles.each do |article| %>
