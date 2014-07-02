@@ -1,9 +1,11 @@
 <% if !@articles.nil? %>
   <div id="slider" class="flexslider t_padding_20">
     <ul class="slides">
+      <% picture_num = 0 %>
       <% @articles.each do |article| %>
         <% article.tour_pictures.each do |picture| %>
           <% next if picture.nil? %>
+          <% picture_num > 7 ? break : picture_num+=1 %>
           <li class="centered">
             <%= image_tag picture.image(:max)%>
           </li>
