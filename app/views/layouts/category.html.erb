@@ -23,22 +23,16 @@
     </div>
     <div id="sidebar">
       <div class="news">
-        <h1 class="block_title">News</h1>
-        <div>
-          <span>25 march</span>
-          <p>Lorem ipsum dolor sit amet, sectetu adip scing varius interdum incid unt quis, libero. Aenean mturpis. Maecenas hendrerit masa laoreet iaculipede mnisl ulamcorper. Tellus er sodales enim, in tincidunt mauris.</p>
-          <a href="#" class="more2">more info</a>
-        </div>
-        <div>
-          <span>12 march</span>
-          <p>Lorem ipsum dolor sit amet, sectetu adip scing varius interdum incid unt quis, libero. Aenean mturpis. Maecenas hendrerit masa laoreet iaculipede mnisl ulamcorper. Tellus er sodales enim, in tincidunt mauris.</p>
-          <a href="#" class="more2">more info</a>
-        </div>
+        <% is_tourist_route = !params[:action].include?("category") %>
+        <% others = is_tourist_route ? @other_tourist_route[0..2] : @other_scenic_spots[0..2] %>
+        <h1 class="block_title"><%= is_tourist_route ? "Other Tourist Route" : "Other Scenic Spots" %></h1>
+        <% others.each do |other| %>
+          <div>
+            <%= link_to content_tag(:span,is_tourist_route ?  other.title : other.name), {:controller=>"index", :action=>"#{is_tourist_route ? other.format_title : other.format_name}_category"}  %>
+            <p><%= is_tourist_route ?  other.content.none_html_content : none_html_content(other.description)  %></p>
+          </div>
+        <% end %>
         <a href="#" id="all">all news</a>
-      </div>
-      <div>
-        <h1 class="block_title">Airport Information</h1>
-        <p>Lorem ipsum dolor sit amet, sectetu adip scing varius interdum incid unt quis, libero. Aenean mturpis. Maecenas hendrerit masa laoreet iaculipede mnisl ulamcorper. Tellus er sodales enim, in tincidunt mauris in odio. Massa ac laoreet iaculipede nisl ullamcorpermassa, ac consectetuer feipsum eget pede.  Proin nunc. Donec massa. Nulla pulvinar, nisl ac convallis nonummy, tellus eros sodales enim, in tincidunt mauris in odio.  massa ac laoreet iaculipede nisl ullamcorpermassa,consectetuer feipsum eget pede. Proin nunc. Donec massa. Nulla pulvinar, nisl ac convallis nonummy, tellus eros sodales enim, in tincidunt.</p>
       </div>
     </div>
   </div>

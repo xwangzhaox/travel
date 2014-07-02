@@ -31,6 +31,7 @@ class IndexController < ApplicationController
           @article = Admin::Article.find_by_format_title(method_id)
         rescue Exception => e
           @article = Admin::Article.find_by_format_title(method_id.to_s.gsub(/\_/, " ").titleize)
+          @other_tourist_route = @article.categories.first.articles.select{|x|x.format_title!=method_id}
         end
         render :template => "index/tour"
       end
@@ -40,6 +41,7 @@ class IndexController < ApplicationController
         @category = Category.find_by_format_name(method_id[0..-10])
         @page_title = method_id.to_s.gsub(/\_/, " ").titleize
         @articles = @category.articles
+        @other_scenic_spots = Category.all.select{|x|x.scenic_spots==true && x.format_name!=method_id[0..-10]}
         render :template => "index/category", :layout => 'category'
       end
       self.send(method_id)
