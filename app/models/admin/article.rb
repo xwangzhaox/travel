@@ -12,6 +12,6 @@ class Admin::Article < ActiveRecord::Base
   end
 
   def none_html_content
-    self.content.html_safe.gsub(/<.*?>/, "")[0..300]+"..."
+    self.content.html_safe.gsub(/<.*?>/, "")[0..200]+"..."
   end
 end

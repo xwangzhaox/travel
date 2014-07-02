@@ -22,17 +22,17 @@
   <div class="article_block">
     <div class="block_left img">
       <% if article.tour_pictures.present? %>
-        <%= image_tag article.tour_pictures.first.image(:s120) %>
+        <%= image_tag article.tour_pictures.first.image(:s120), size:"130x90"%>
       <% else %>
-        <img src="/assets/nil_image.jpg" alt="" width="120" height="120" />
+        <img src="/assets/nil_image.jpg" alt="" width="130" height="90" />
       <% end %>
     </div>
     <div class="block_right">
       <div class="article_title">
-        <%= link_to article.title, {:controller=>"index", :action=>article.format_title} %>
+        <%= link_to content_tag(:h3, article.title), {:controller=>"index", :action=>article.format_title}%>
       </div>
       <div class="article_content">
-        <%= article.none_html_content %>
+        <p><%= article.none_html_content %></p>
       </div>
     </div>
   </div>
