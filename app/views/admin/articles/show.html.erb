@@ -7,6 +7,20 @@
           <%= @admin_article.title %>      
         </div>
       </div>
+      <% if @admin_article.is_tourist_route? %>
+      <div class="control-group display-flex">
+        <label class="control-label" for="events">Tour Code:</label>
+        <div class="controls">
+          <%= @admin_article.tour_code %>      
+        </div>
+      </div>
+      <div class="control-group display-flex">
+        <label class="control-label" for="events">Quotation:</label>
+        <div class="controls">
+          <%= @admin_article.quotation %>      
+        </div>
+      </div>
+      <% end %>
       <div class="control-group display-flex">
         <label class="control-label" for="events">Content:</label>
         <div class="controls">

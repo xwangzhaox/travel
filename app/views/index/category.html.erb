@@ -31,10 +31,11 @@
     </div>
     <div class="block_right">
       <div class="article_title">
-        <%= link_to content_tag(:h3, article.title), {:controller=>"index", :action=>article.format_title}%>
+        <%= link_to content_tag(:h3, article.title), {:controller=>"index", :action=>article.format_title}, :class=>"green"%>
       </div>
       <div class="article_content">
-        <p><%= article.none_html_content %></p>
+        <p><%= article.tour_code %></p>
+        <p><%= article.quotation %></p>
       </div>
     </div>
   </div>

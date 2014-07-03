@@ -527,7 +527,20 @@ width: 402px;
 .t_padding_20 {padding-top: 20px;} 
 
 /********* Article Item **********/
-.article_block {margin-top: 30px;}
+.article_block {
+  border-bottom: 1px solid #eaeaea;
+  overflow: hidden;
+  padding: 11px 0;
+  width: 730px;
+  float: left;
+}
+.article_title a.green {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #1BB501;
+  font-weight: bold;
+}
+.green {color: #1BB501;}
 .block_left {float: left;width: 140px;}
 .block_right {padding: 10px;width: 80%;}
 .block_right .article_content p {line-height: 16px;}

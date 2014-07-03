@@ -18,6 +18,20 @@
       <%= f.text_field :title %>  
     </div>
   </div>
+  <% if f.object.is_tourist_route? %>
+  <div class="control-group">
+    <label class="control-label" for="events"><%= f.label :tour_code %></label>
+    <div class="controls">
+      <%= f.text_field :tour_code %>  
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="events"><%= f.label :quotation %></label>
+    <div class="controls">
+      <%= f.text_field :quotation %>  
+    </div>
+  </div>
+  <% end %>
   <div class="control-group">
     <label class="control-label" for="events"><%= f.label :content %></label>
     <div class="controls">
