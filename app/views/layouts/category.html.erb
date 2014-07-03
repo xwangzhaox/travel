@@ -18,21 +18,18 @@
   </div>
   <div id="content">
       <div id="main">
-        <p><a href="#" class="style4">Tours</a>  &raquo; <%= @page_title %></p>
+        <p><%= link_to "Tour", {:controller=>"index", :action=>"index"}%> &raquo; <%= @page_title %></p>
        <%= yield %>
     </div>
     <div id="sidebar">
       <div class="news">
-        <% is_tourist_route = !params[:action].include?("category") %>
-        <% others = is_tourist_route ? @other_tourist_route[0..2] : @other_scenic_spots[0..2] %>
-        <h1 class="block_title"><%= is_tourist_route ? "Other Tourist Route" : "Other Scenic Spots" %></h1>
-        <% others.each do |other| %>
+        <h1 class="block_title">Other Scenic Spots</h1>
+        <% @other_scenic_spots.each do |other| %>
           <div>
-            <%= link_to content_tag(:span,is_tourist_route ?  other.title : other.name), {:controller=>"index", :action=>"#{is_tourist_route ? other.format_title : other.format_name}_category"}  %>
-            <p><%= is_tourist_route ?  other.content.none_html_content : none_html_content(other.description)  %></p>
+            <%= link_to content_tag(:span, other.name), {:controller=>"index", :action=>"#{other.format_name}_category"} %>
+            <p><%= none_html_content(other.description)  %></p>
           </div>
         <% end %>
-        <a href="#" id="all">all news</a>
       </div>
     </div>
   </div>

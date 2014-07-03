@@ -16,6 +16,7 @@ class IndexController < ApplicationController
       @page_title = menu.gsub(/\_/, " ").titleize
         begin
           @article = Admin::Article.find_by_format_title(menu)
+          @other_tourist_route = Admin::Article.all[0..5] 
         rescue Exception => e
           @article = Admin::Article.find_by_format_title(menu.to_s.gsub(/\_/, " ").titleize)
         end
@@ -27,12 +28,8 @@ class IndexController < ApplicationController
     if Admin::Article.all.map{|x|x.title.gsub(/ /,"_").downcase}.include?(method_id.to_s)
       self.class.send :define_method, method_id do
         @page_title = method_id.to_s.gsub(/\_/, " ").titleize
-        begin
-          @article = Admin::Article.find_by_format_title(method_id)
-        rescue Exception => e
-          @article = Admin::Article.find_by_format_title(method_id.to_s.gsub(/\_/, " ").titleize)
-          @other_tourist_route = @article.categories.first.articles.select{|x|x.format_title!=method_id}
-        end
+        @article = Admin::Article.find_by_format_title(method_id)
+        @other_tourist_route = @article.categories.first.articles.select{|x|x.format_title!=method_id}
         render :template => "index/tour"
       end
       self.send(method_id)

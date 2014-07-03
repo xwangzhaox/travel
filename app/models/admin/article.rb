@@ -14,4 +14,8 @@ class Admin::Article < ActiveRecord::Base
   def none_html_content
     self.content.html_safe.gsub(/<.*?>/, "")[0..200]+"..."
   end
+
+  def is_tourist_route?
+    self.is_tourist_route
+  end
 end

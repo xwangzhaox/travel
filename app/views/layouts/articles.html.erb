@@ -16,9 +16,13 @@
 		<%= render :partial => "layouts/shared/header" %>
 	</div>
 	<div id="content">
-  	  <div id="main">
-	  		<p><a href="#" class="style4">Tours</a>  &raquo; <%= @page_title %></p>
-		 	 <div>
+      	  <div id="main">
+            <% if !['about_company', 'hot_tours', 'hotels', 'car_rental', 'contact_us'].include?(params[:action]) %>
+    	  		<p><%= link_to "Tour", {:controller=>"index", :action=>"index"}%>&raquo;
+              <%= link_to "#{@article.categories.last.name}", {:controller=>"index", :action=>"#{@article.categories.last.format_name}_category"}%>
+              &raquo; <%= @page_title %></p>
+            <% end %>
+    		 	<div>
 		 	 	<!-- Place somewhere in the <body> of your page -->
 		 	 	<% if !@article.nil? and !@article.tour_pictures.empty? %>
 					<div id="slider" class="flexslider t_padding_20">
@@ -57,22 +61,15 @@
 	  </div>
 		<div id="sidebar">
 			<div class="news">
-				<h1 class="block_title">News</h1>
-				<div>
-					<span>25 march</span>
-					<p>Lorem ipsum dolor sit amet, sectetu adip scing varius interdum incid unt quis, libero. Aenean mturpis. Maecenas hendrerit masa laoreet iaculipede mnisl ulamcorper. Tellus er sodales enim, in tincidunt mauris.</p>
-					<a href="#" class="more2">more info</a>
-				</div>
-				<div>
-					<span>12 march</span>
-					<p>Lorem ipsum dolor sit amet, sectetu adip scing varius interdum incid unt quis, libero. Aenean mturpis. Maecenas hendrerit masa laoreet iaculipede mnisl ulamcorper. Tellus er sodales enim, in tincidunt mauris.</p>
-					<a href="#" class="more2">more info</a>
-				</div>
-				<a href="#" id="all">all news</a>
-			</div>
-			<div>
-				<h1 class="block_title">Airport Information</h1>
-				<p>Lorem ipsum dolor sit amet, sectetu adip scing varius interdum incid unt quis, libero. Aenean mturpis. Maecenas hendrerit masa laoreet iaculipede mnisl ulamcorper. Tellus er sodales enim, in tincidunt mauris in odio. Massa ac laoreet iaculipede nisl ullamcorpermassa, ac consectetuer feipsum eget pede.  Proin nunc. Donec massa. Nulla pulvinar, nisl ac convallis nonummy, tellus eros sodales enim, in tincidunt mauris in odio.  massa ac laoreet iaculipede nisl ullamcorpermassa,consectetuer feipsum eget pede. Proin nunc. Donec massa. Nulla pulvinar, nisl ac convallis nonummy, tellus eros sodales enim, in tincidunt.</p>
+        <h1 class="block_title">Other Tourist Route</h1>
+        <% @other_tourist_route.each do |other| %>
+        <% next if other.nil?%>
+          <div>
+            <%= link_to content_tag(:span, other.title), {:controller=>"index", :action=>other.format_title}  %>
+            <p><%= other.none_html_content  %></p>
+          </div>
+        <% end %>
+        <%= link_to "all tourist routes", {:controller=>"index", :action=>"#{@article.format_title}_category"}, :id=>"all" %>
 			</div>
 		</div>
 	</div>
