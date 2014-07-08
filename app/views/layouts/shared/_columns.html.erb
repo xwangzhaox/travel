@@ -24,14 +24,14 @@
         <div class="column c2">
           <div>
             <h4 class="title2">Hot Tours</h4>
-            <% @hot_tours_name.each do |hot_tour| %>
+            <% @hot_tours_name.each do |category| %>
               <div class="pic">
-                <% if hot_tour.tour_pictures.empty? %>
+                <% if category.articles.first.tour_pictures.empty? %>
                   <a href="#"><img src="/assets/pic1.jpg" alt="" width="108" height="53" /></a>
                 <% else %>
-                  <%= link_to image_tag(hot_tour.tour_pictures.first.image(:s120), size: "108x53"), {:controller=>"index", :action=>hot_tour.title.gsub(/ /, "_").downcase} %><br />
+                  <%= link_to image_tag(category.articles.first.tour_pictures.first.image(:s120), size: "108x53"), {:controller=>"index", :action=>"#{category.format_name}_category"} %><br />
                 <% end %>
-                <span><%= link_to hot_tour.title.gsub(/_/, " ").titleize, {:controller=>"index", :action=>hot_tour.title.gsub(/ /, "_").downcase} %></span>
+                <span><%= link_to category.name, {:controller=>"index", :action=>"#{category.format_name}_category"} %></span>
               </div>
             <% end %>
             <!-- <div class="pic">
@@ -53,8 +53,8 @@
           <div>
             <h4 class="title3">Top Hotel Deals</h4>
             <ul>
-              <% @top_hotel_deals_name.each do |top_hotel_deal| %>
-                <li><%= link_to top_hotel_deal.title.gsub(/_/, " ").titleize, {:controller=>"index", :action=>top_hotel_deal.title.gsub(/ /, "_").downcase} %></li>  
+              <% @top_hotel_deals_name.each do |category| %>
+                <li><%= link_to category.name, {:controller=>"index", :action=>"#{category.format_name}_category"} %></li>  
               <% end %>
               <!-- <li><a href="#">Beijing Tianjin Tour</a></li>
               <li><a href="#">Beijing Xi’an Tour</a></li>

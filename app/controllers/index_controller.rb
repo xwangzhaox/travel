@@ -5,8 +5,8 @@ class IndexController < ApplicationController
     @promotions = Admin::Article.find_by_title("News & Promotions").html_content
     @travel_guide = Admin::Article.find_by_title("travel_guide").html_content
     @popular_tours_name   = Category.find_by_name("POPULAR TOURS").sub_categories
-    @hot_tours_name       = Category.find_by_name("HOT TOURS").articles
-    @top_hotel_deals_name = Category.find_by_name("TOP HOTEL DEALS").articles
+    @hot_tours_name       = Category.find_by_name("HOT TOURS").sub_categories
+    @top_hotel_deals_name = Category.find_by_name("TOP HOTEL DEALS").sub_categories
 
     render :layout => 'application'
   end
