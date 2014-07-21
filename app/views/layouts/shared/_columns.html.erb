@@ -51,7 +51,7 @@
         </div>
         <div class="column c3">
           <div>
-            <h4 class="title3">Top Hotel Deals</h4>
+            <h4 class="title3">Package Tour</h4>
             <ul>
               <% @top_hotel_deals_name.each do |category| %>
                 <li><%= link_to category.name, {:controller=>"index", :action=>"#{category.format_name}_category"} %></li>  
