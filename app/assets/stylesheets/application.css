@@ -512,7 +512,7 @@ width: 402px;
   font-style: italic;
   font-weight: 600;
 }
-#contact_us .contact-body h2 { font-size: xx-large; float: right; padding-top: 10px;}
+#contact_us .contact-body h2 { font-size: x-large; float: right; padding-top: 10px; color:red;}
 .block_title {font-weight: initial;}
 .talk_online {
   margin: 40px 5px 0px 0px;
