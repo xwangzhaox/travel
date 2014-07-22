@@ -1,4 +1,5 @@
         <div class="column">
+          <% if @popular_tours_name %>
           <div>
             <h4 class="title1">Popular Tours</h4>
             <ul>
@@ -21,6 +22,8 @@
             <a href="#" class="more"></a>
           </div>
         </div>
+        <% end %>
+        <% if @hot_tours_name %>
         <div class="column c2">
           <div>
             <h4 class="title2">Hot Tours</h4>
@@ -49,6 +52,8 @@
             <a href="#" class="more"></a>
           </div>
         </div>
+        <% end %>
+        <% if @top_hotel_deals_name %>
         <div class="column c3">
           <div>
             <h4 class="title3">Package Tour</h4>
@@ -67,3 +72,4 @@
             <a href="#" class="more"></a>
           </div>
         </div>
+        <% end %>

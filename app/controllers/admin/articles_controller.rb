@@ -1,5 +1,6 @@
 class Admin::ArticlesController < ApplicationController
   layout "admin"
+  before_filter :authenticate_user!
 
   Category.all.map(&:name).each do |category|
     define_method(category.gsub(/ /, "_").downcase) do

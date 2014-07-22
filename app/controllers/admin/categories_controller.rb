@@ -1,5 +1,6 @@
 class Admin::CategoriesController < ApplicationController
   layout "admin"
+  before_filter :authenticate_user!
 
   def show
     @category = Category.find_by_format_name(params[:format_name])
